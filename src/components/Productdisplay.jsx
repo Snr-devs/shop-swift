@@ -12,7 +12,7 @@ function Productdisplay() {
         {product.map(product=>
         <div className='single-product'>
             <p>{product.title}</p>
-            <img src={product.url}></img>
+            <img src={product.url} alt='image tittle'></img>
         </div>
         )}
     </div>

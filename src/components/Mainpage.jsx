@@ -1,6 +1,7 @@
 import React from 'react'
 import Productdisplay from './Productdisplay'
 
+
 function Mainpage() {
   return (
     <div>
