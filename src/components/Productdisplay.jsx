@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Button from './Button'
 
 function Productdisplay() {
     const[product,setProduct]=useState([])
@@ -8,11 +9,16 @@ function Productdisplay() {
        .then(data=>{setProduct(data)})
     },[])
   return (
-    <div>
+    <div className='products'>
         {product.map(product=>
-        <div className='single-product'>
+        <div className='singleproduct'>
             <p>{product.title}</p>
+<<<<<<< Arnold-Maruti
+            <img src={product.url}></img>
+            <Button />
+=======
             <img src={product.url} alt='image tittle'></img>
+>>>>>>> main
         </div>
         )}
     </div>
