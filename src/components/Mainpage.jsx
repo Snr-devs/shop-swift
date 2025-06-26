@@ -3,6 +3,7 @@ import Productdisplay from './Productdisplay'
 import Account from './Account'
 import Navbar from './Navbar'
 
+
 function Mainpage() {
   return (
     <div>

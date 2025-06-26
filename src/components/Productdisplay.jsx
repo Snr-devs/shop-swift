@@ -13,8 +13,12 @@ function Productdisplay() {
         {product.map(product=>
         <div className='singleproduct'>
             <p>{product.title}</p>
+<<<<<<< Arnold-Maruti
             <img src={product.url}></img>
             <Button />
+=======
+            <img src={product.url} alt='image tittle'></img>
+>>>>>>> main
         </div>
         )}
     </div>
