@@ -8,9 +8,9 @@ function Productdisplay() {
        .then(data=>{setProduct(data)})
     },[])
   return (
-    <div>
+    <div className='products'>
         {product.map(product=>
-        <div className='single-product'>
+        <div className='singleproduct'>
             <p>{product.title}</p>
             <img src={product.url}></img>
         </div>
