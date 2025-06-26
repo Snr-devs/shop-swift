@@ -25,10 +25,8 @@ const LoginPage = () => {
 
     if (isLogin) {
       console.log("Logging in with:", formData);
-      // TODO: Connect to login API
     } else {
       console.log("Signing up with:", formData);
-      // TODO: Connect to signup API
     }
   };
 
@@ -48,7 +46,7 @@ const LoginPage = () => {
               value={formData.username}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md"
             />
           )}
           <input
@@ -58,7 +56,7 @@ const LoginPage = () => {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md"
           />
           <input
             type="password"
@@ -67,11 +65,11 @@ const LoginPage = () => {
             value={formData.password}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md"
           />
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition duration-300"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md"
           >
             {isLogin ? 'Login' : 'Sign Up'}
           </button>
