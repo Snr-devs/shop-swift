@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Button from './Button'
 
 function Productdisplay() {
     const[product,setProduct]=useState([])
@@ -13,6 +14,7 @@ function Productdisplay() {
         <div className='singleproduct'>
             <p>{product.title}</p>
             <img src={product.url}></img>
+            <Button />
         </div>
         )}
     </div>
