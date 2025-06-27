@@ -25,11 +25,12 @@
 
 .account{
   border: 1px solid black;
+  border-radius: 25px;
   display: flex;
-  align-items: center;
+  justify-content:space-between;
   flex-direction: column;
-  margin: 200px;
-  padding: 20px 350px;
+  margin: 0px 200px;
+  height:900px;
 }
 
 .bar{

@@ -11,6 +11,8 @@ function Account({account}) {
        <p>Username:</p>
        <p>Email:</p>
        <p>Phone number:</p>
+       <p>Nationality</p>
+       <p></p>
        </div>
        
     </div>

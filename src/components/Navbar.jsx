@@ -6,7 +6,9 @@ function Navbar() {
     <div>
         <nav className='navbar'>
           <Link to="/account">Account</Link>
-          <Link to="/">Home</Link>
+          <Link to="/mainpage">Home</Link>
+          <Link to="/cartpage">Cart</Link>
+
         </nav>
     </div>
   )

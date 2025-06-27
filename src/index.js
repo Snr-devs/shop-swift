@@ -5,26 +5,32 @@ import LoginPage from './components/LoginPage';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Account from './components/Account';
+import App from './App'
+import CartPage from './components/CartPage';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />
+    element: <LoginPage />
   },
   {
     path:"/account",
     element:<Account />
+  },
+  {
+    path:"/mainpage",
+    element:<App />
+  },
+  {
+    path:"/cart",
+    element:<CartPage />
   }
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-<<<<<<< Arnold-Maruti
     <RouterProvider router={router} />
-=======
-    <LoginPage /> 
->>>>>>> main
   </React.StrictMode>
 );
 
