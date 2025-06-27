@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     element:<App />
   },
   {
-    path:"/cart",
+    path:"/cartpage",
     element:<CartPage />
   }
 ]);

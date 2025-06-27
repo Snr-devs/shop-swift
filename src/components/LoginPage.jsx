@@ -31,8 +31,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
-      <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-md">
+    <div className="main">
+      <h2 className='main2'>Shop Swift App</h2>
+      <div className="loginbox">
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
           {isLogin ? 'Login to your account' : 'Create a new account'}
         </h2>
@@ -57,7 +58,7 @@ const LoginPage = () => {
             onChange={handleChange}
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-md"
-          />
+          /><br></br>
           <input
             type="password"
             name="password"
@@ -66,7 +67,7 @@ const LoginPage = () => {
             onChange={handleChange}
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-md"
-          />
+          /><br></br>
           <button
             type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md"
@@ -75,15 +76,15 @@ const LoginPage = () => {
           </button>
         </form>
 
-        <p className="text-sm text-center mt-4">
-          {isLogin ? "Don't have an account?" : 'Already have an account?'}{' '}
+        <p className="b">
+          {isLogin ? "Don't have an account?" : 'Already have an account?'}{' '}</p>
           <button
             onClick={toggleForm}
-            className="text-blue-600 hover:underline font-medium"
+            className="bottompage"
           >
             {isLogin ? 'Sign Up' : 'Login'}
           </button>
-        </p>
+        
       </div>
     </div>
   );
