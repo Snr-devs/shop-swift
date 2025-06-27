@@ -10,10 +10,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'; // ✅ Add this
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter> {/* ✅ Add Router wrapper */}
-      <Routes>       {/* ✅ Handle routes */}
-        <Route path="/" element={<LoginPage />} />       {/* 🏠 Login */}
-        <Route path="/cart" element={<CartPage />} />    {/* 🛒 Cart */}
+    <BrowserRouter>
+      <Routes>      
+        <Route path="/" element={<LoginPage />} />       
+        <Route path="/cart" element={<CartPage />} />    
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
