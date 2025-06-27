@@ -1,89 +1,109 @@
 import React, { useState } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
 
 const LoginPage = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: ''
+
+  const toggleForm = () => setIsLogin(!isLogin);
+
+  const LoginSchema = Yup.object().shape({
+    email: Yup.string().email('Invalid email').required('Required'),
+    password: Yup.string().min(4, 'Too short!').required('Required'),
   });
 
-  const toggleForm = () => {
-    setIsLogin(!isLogin);
-    setFormData({ username: '', email: '', password: '' });
-  };
+  const SignupSchema = Yup.object().shape({
+    username: Yup.string().min(3, 'Too short!').required('Required'),
+    email: Yup.string().email('Invalid email').required('Required'),
+    password: Yup.string().min(4, 'Too short!').required('Required'),
+  });
 
-  const handleChange = (e) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (isLogin) {
-      console.log("Logging in with:", formData);
-    } else {
-      console.log("Signing up with:", formData);
+  const handleSubmit = async (values, { setSubmitting, setErrors }) => {
+    try {
+      if (isLogin) {
+        const res = await axios.post('http://localhost:5000/login', values);
+        console.log('✅ Logged in:', res.data);
+        // Redirect or store token here
+      } else {
+        const res = await axios.post('http://localhost:5000/signup', values);
+        console.log('✅ Signed up:', res.data);
+        // Redirect or notify success
+      }
+    } catch (err) {
+      console.error('❌ Error:', err);
+      setErrors({ email: 'Invalid credentials or user already exists' });
+    } finally {
+      setSubmitting(false);
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
-      <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-md">
+    <div className="main">
+      <h2 className='main2'>Shop Swift App</h2>
+      <div className="loginbox">
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
           {isLogin ? 'Login to your account' : 'Create a new account'}
         </h2>
-        
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {!isLogin && (
-            <input
-              type="text"
-              name="username"
-              placeholder="Username"
-              value={formData.username}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-md"
-            />
-          )}
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md"
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md"
-          />
-          <button
-            type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md"
-          >
-            {isLogin ? 'Login' : 'Sign Up'}
-          </button>
-        </form>
 
-        <p className="text-sm text-center mt-4">
-          {isLogin ? "Don't have an account?" : 'Already have an account?'}{' '}
-          <button
-            onClick={toggleForm}
-            className="text-blue-600 hover:underline font-medium"
-          >
-            {isLogin ? 'Sign Up' : 'Login'}
-          </button>
+        <Formik
+          initialValues={{ username: '', email: '', password: '' }}
+          validationSchema={isLogin ? LoginSchema : SignupSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ isSubmitting }) => (
+            <Form className="space-y-4">
+              {!isLogin && (
+                <div>
+                  <Field
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                  />
+                  <ErrorMessage name="username" component="div" className="text-red-500 text-sm" />
+                </div>
+              )}
+
+              <div>
+                <Field
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                />
+                <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
+              </div>
+
+              <div>
+                <Field
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                />
+                <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md"
+              >
+                {isSubmitting
+                  ? isLogin ? 'Logging in...' : 'Signing up...'
+                  : isLogin ? 'Login' : 'Sign Up'}
+              </button>
+            </Form>
+          )}
+        </Formik>
+
+        <p className="b">
+          {isLogin ? "Don't have an account?" : 'Already have an account?'}
         </p>
+        <button onClick={toggleForm} className="bottompage">
+          {isLogin ? 'Sign Up' : 'Login'}
+        </button>
       </div>
     </div>
   );
