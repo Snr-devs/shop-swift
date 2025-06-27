@@ -1,7 +1,7 @@
 .products{
   border: 2px solid black;
   border-radius: 25px;
-  background-color: azure;
+  background-color: #173b41;
   display: flex;
   flex-wrap:wrap;
   margin: 70px;
@@ -31,6 +31,7 @@
   flex-direction: column;
   margin: 0px 200px;
   height:900px;
+  background-color:#173b41 ;
 }
 
 .bar{
@@ -46,8 +47,9 @@ img{
   height: 100px;
 }
 
-p, .navbar{
+p, .navbar,h2,a,img{
   font-size: 40px;
+  color: #ecceac;
 }
 
 .left{
@@ -59,7 +61,6 @@ p, .navbar{
 .navbar a{
   text-decoration: none;
   margin: 5px ;
-  color: black;
 }
 
 a:hover{
@@ -70,4 +71,54 @@ button{
   width: 220px;
   height:60px;
   margin: 5px;
+  background-color: #2d0724;
+  color: #ecceac;
+  font-size: 20px;
+}
+.loginbox{
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 750px;
+  height: 450px;
+  margin: 300px 500px;
+  border-radius: 25px;
+  background-color: #173b41;
+}
+input{
+  margin: 10px;
+}
+
+form  button, .bottompage{
+  margin: 150px,0px;
+  background-color: #e9daaf;
+  background-color: #2d0724;
+  color: #ecceac;
+}
+
+
+body{
+  background-color:#14222f;
+}
+
+.bars{
+  display: flex;
+  justify-content: space-around;
+}
+.textcenter{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main2{
+  display: flex;
+  justify-content: center;
+}
+
+.image{
+  width: 250px;
+  height: 300px;
 }
