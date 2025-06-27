@@ -10,7 +10,7 @@ function Button() {
 
   return (
     <div>
-      <button onClick={handleClick}>{buttonText}</button>
+      <button className='break'onClick={handleClick}>{buttonText}</button>
     </div>
   );
 }
