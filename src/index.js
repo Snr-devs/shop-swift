@@ -4,8 +4,8 @@ import './index.css';
 import LoginPage from './components/LoginPage'; 
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Account from './components/Account'; 
-import App from './App';
+import Account from './components/Account';
+import App from './App'
 import CartPage from './components/CartPage';
 
 
@@ -23,11 +23,10 @@ const router = createBrowserRouter([
     element:<App />
   },
   {
-    path:"/cartpage",
+    path:"/cart",
     element:<CartPage />
   }
 ]);
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
