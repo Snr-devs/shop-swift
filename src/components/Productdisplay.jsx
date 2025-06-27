@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Button from './Button'
 
-function Productdisplay() {
+function Productdisplay(){
     const[product,setProduct]=useState([])
     useEffect(()=>{
        fetch('https://jsonplaceholder.typicode.com/photos')
@@ -14,7 +14,7 @@ function Productdisplay() {
         <div className='singleproduct'>
             <p>{product.title}</p>
             <img src={product.url}></img>
-            <Button />
+            <Button product={product}/>
         </div>
         )}
     </div>

@@ -1,10 +1,15 @@
 import React from 'react'
 
-function NewCart({data}) {
+function NewCart({blocks}) {
   return (
     <div>
-        <p>pepe</p>
-        <p>popo</p>
+      {
+        blocks.map((item,index)=>
+                <div key={index}>
+                    <p>{item.title}</p>
+                </div>
+            )
+    }
     </div>
   )
 }

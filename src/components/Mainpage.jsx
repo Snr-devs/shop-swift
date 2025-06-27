@@ -2,9 +2,11 @@ import React from 'react'
 import Productdisplay from './Productdisplay'
 import Account from './Account'
 import Navbar from './Navbar'
+import { useState } from 'react'
 
 
 function Mainpage() {
+  
   return (
     <div>
         <div className='bar'>
