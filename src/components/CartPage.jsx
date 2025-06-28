@@ -1,23 +1,49 @@
-import React, { useState } from 'react';
-import {useLocation} from 'react-router-dom';
-import Navbar from './Navbar';
+import React from 'react'
 import Cart from './Cart';
-import NewCart from './NewCart';
+import { useState,useEffect } from 'react';
+import Navbar from './Navbar';
 
-const CartPage = () => {
-  // const [data,setData]=useState([])
-  // const [value,setValue]=useState(false)
+function CartPage() {
+  const [data, setData] = useState(null);  // Holds fetched data
+  const [error, setError] = useState(false); // Handles fetch failure
 
-  // const location = useLocation();
-  //  const {value,block}= location.state||{};
+  useEffect(() => {
+    fetch('https://shop-swift-back-end-6.onrender.com/orders') 
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(json => {
+        if (json.length === 0) {
+          setError(true); 
+        } else {
+          setData(json);
+        }
+      })
+      .catch(() => {
+        setError(true); 
+      });
+  }, []);
 
-  ;
-  
+  if (error || data === null || data.length === 0) {
+    return <Cart />;
+  }
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-        { value ? <NewCart blocks={block}/>: <Cart />}
-    </div>
-  );
-};
+    <div>
+      <Navbar />
+      {
+        data.map(dats=>
+          <div className='order'>
+            <p>{dats.total_price}</p>
 
-export default CartPage;
+
+          </div>  
+        )
+      }
+    </div>
+  )
+}
+
+export default CartPage

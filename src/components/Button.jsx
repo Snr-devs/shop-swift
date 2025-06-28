@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 
 function Button({product}){
   const [buttonText, setButtonText] = useState('Buy now');
 
   const handleClick = (e) => {
     e.preventDefault(); 
-    setButtonText('Added to cart');
-    useEffect(()=>{
-      fetch("https://jsonplaceholder.typicode.com/posts"{
+    setButtonText('Added to cart');}
+    
+      fetch("https://shop-swift-back-end-6.onrender.com/orders",{
         method:'POST',
         headers:{
           'Content-type':'application/json'
@@ -15,9 +15,7 @@ function Button({product}){
         body:JSON.stringify(product)
       })
       .then(res=>res.json())
-      .then(data=>{console.log(product)})
-    },[])
-  };
+      .then(data=>{console.log(data)})
 
   return (
     <div>

@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react'
 import Button from './Button'
 
 function Productdisplay(){
-    const[product,setProduct]=useState([])
+    const[products,setProduct]=useState([])
     useEffect(()=>{
-       fetch('https://jsonplaceholder.typicode.com/photos')
+       fetch('https://shop-swift-back-end-6.onrender.com/products')
        .then(res=>res.json())
        .then(data=>{setProduct(data)})
     },[])
   return (
     <div className='products'>
-        {product.map(product=>
+        {products.map(product=>
         <div className='singleproduct'>
-            <p>{product.title}</p>
-            <img src={product.url}></img>
+            <p>{product.name}</p>
+            <img src={product.image_url} alt={product.name}></img>
             <Button product={product}/>
         </div>
         )}
