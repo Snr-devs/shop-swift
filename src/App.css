@@ -166,3 +166,132 @@ img {
   border-radius: 15px;
   object-fit: cover;
 }
+
+@media (max-width: 1024px) {
+  .products {
+    margin: 30px;
+    padding: 20px;
+    justify-content: center;
+  }
+
+  .singleproduct {
+    width: 200px;
+  }
+
+  .account {
+    margin: 0 50px;
+    height: auto;
+  }
+
+  .loginbox {
+    width: 90%;
+    height: auto;
+  }
+
+  .navbar a {
+    font-size: 20px;
+  }
+
+  .main2 {
+    font-size: 28px;
+  }
+
+  h2, p, .navbar, a, img {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .products {
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .singleproduct {
+    width: 90%;
+  }
+
+  .account {
+    margin: 20px;
+    height: auto;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .bar, .bars {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .loginbox {
+    width: 100%;
+    margin: 40px 0;
+  }
+
+  .main2 {
+    font-size: 24px;
+    margin-top: 20px;
+  }
+
+  button {
+    width: 180px;
+    height: 50px;
+    font-size: 18px;
+  }
+
+  h2, p, .navbar, a, img {
+    font-size: 22px;
+  }
+
+  img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .image {
+    width: 200px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .products,
+  .account,
+  .loginbox {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .singleproduct {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .navbar a {
+    font-size: 18px;
+  }
+
+  button {
+    width: 150px;
+    height: 45px;
+    font-size: 16px;
+  }
+
+  .main2 {
+    font-size: 20px;
+  }
+
+  h2, p, .navbar, a, img {
+    font-size: 18px;
+  }
+
+  .image {
+    width: 180px;
+    height: 220px;
+  }
+}
