@@ -38,14 +38,9 @@ const LoginPage = () => {
     const res = await axios.post(url, payload);
 
     console.log(isLogin ? '✅ Logged in:' : '✅ Signed up:', res.data);
-    localStorage.setItem('user', JSON.stringify(res.data.user));
-    if (res.data.access_token) {
-      localStorage.setItem('access_token', res.data.access_token);
-    }
-    if (res.data.refresh_token) {
-      localStorage.setItem('refresh_token', res.data.refresh_token);
-    }
-
+    if (isLogin && res.data.access_token) {
+  localStorage.setItem('token', res.data.access_token);
+}
     navigate('/mainpage');
   } catch (err) {
     console.error('❌ Error:', err.response?.data || err.message);

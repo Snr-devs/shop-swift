@@ -8,7 +8,20 @@ function CartPage() {
   const [error, setError] = useState(false); 
 
   useEffect(() => {
-    fetch('https://shop-swift-back-end-6.onrender.com/orders') 
+    const token = localStorage.getItem("token");
+
+     if (!token) {
+      console.error("No token found");
+      setError(true);
+      return;
+    }
+    fetch('https://shop-swift-back-end-6.onrender.com/orders', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    }) 
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
