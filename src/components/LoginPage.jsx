@@ -22,26 +22,52 @@ const LoginPage = () => {
     password: Yup.string().min(4, 'Too short!').required('Required'),
   });
 
+
+
+
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
-    try {
-      if (isLogin) {
-        const res = await axios.post('https://shop-swift-back-end-6.onrender.com/api/login', values);
-        console.log('✅ Logged in:', res.data);
-        navigate('/mainpage');
-        // Redirect or store token here
-      } else {
-        const res = await axios.post('https://shop-swift-back-end-6.onrender.com/api/register', values);
-        console.log('✅ Signed up:', res.data);
-        navigate('/mainpage');
-        // Redirect or notify success
-      }
-    } catch (err) {
-      console.error('❌ Error:', err.response);
-      setErrors({ email: 'Invalid credentials or user already exists' });
-    } finally {
-      setSubmitting(false);
-    }
-  };
+  try {
+    const payload = isLogin
+      ? { email: values.email, password: values.password }  // Only what backend expects
+      : values;
+
+    const url = isLogin
+      ? 'https://shop-swift-back-end-6.onrender.com/api/login'
+      : 'https://shop-swift-back-end-6.onrender.com/api/register';
+
+    const res = await axios.post(url, payload);
+
+    console.log(isLogin ? '✅ Logged in:' : '✅ Signed up:', res.data);
+    navigate('/mainpage');
+  } catch (err) {
+    console.error('❌ Error:', err.response?.data || err.message);
+    setErrors({ email: err.response?.data?.error || 'Invalid credentials or user already exists' });
+  } finally {
+    setSubmitting(false);
+  }
+};
+
+
+  // const handleSubmit = async (values, { setSubmitting, setErrors }) => {
+  //   try {
+  //     if (isLogin) {
+  //       const res = await axios.post('https://shop-swift-back-end-6.onrender.com/api/login', values);
+  //       console.log('✅ Logged in:', res.data);
+  //       navigate('/mainpage');
+  //       // Redirect or store token here
+  //     } else {
+  //       const res = await axios.post('https://shop-swift-back-end-6.onrender.com/api/register', values);
+  //       console.log('✅ Signed up:', res.data);
+  //       navigate('/mainpage');
+  //       // Redirect or notify success
+  //     }
+  //   } catch (err) {
+  //     console.error('❌ Error:', err.response);
+  //     setErrors({ email: 'Invalid credentials or user already exists' });
+  //   } finally {
+  //     setSubmitting(false);
+  //   }
+  // };
 
   return (
     <div className="main">
