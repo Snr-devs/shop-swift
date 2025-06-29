@@ -37,14 +37,26 @@ const LoginPage = () => {
 
     const res = await axios.post(url, payload);
 
-    console.log(isLogin ? '✅ Logged in:' : '✅ Signed up:', res.data);
-    if (isLogin && res.data.access_token) {
-  localStorage.setItem('token', res.data.access_token);
-}
-    navigate('/mainpage');
+  //   console.log(isLogin ? '✅ Logged in:' : '✅ Signed up:', res.data);
+  //   if (isLogin && res.data.access_token) {
+  // localStorage.setItem('token', res.data.access_token);
+  // localStorage.setItem('user', JSON.stringify(res.data.user));
+    if (res.data.access_token) {
+      localStorage.setItem('access_token', res.data.access_token);
+    }
+    if (res.data.refresh_token) {
+      localStorage.setItem('refresh_token', res.data.refresh_token);
+    }
+    if (res.data.user) {
+      localStorage.setItem('user', JSON.stringify(res.data.user));
+    }
+
+    navigate('/mainpage'); // ✅ Move this inside try block
   } catch (err) {
     console.error('❌ Error:', err.response?.data || err.message);
-    setErrors({ email: err.response?.data?.error || 'Invalid credentials or user already exists' });
+    setErrors({
+      email: err.response?.data?.error || 'Invalid credentials or user already exists',
+    });
   } finally {
     setSubmitting(false);
   }

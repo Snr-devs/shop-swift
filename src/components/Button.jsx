@@ -14,7 +14,7 @@ function Button({product}){
       return;
     }
     
-      fetch(`https://shop-swift-back-end-6.onrender.com/orders`,{
+      fetch(`https://shop-swift-back-end-6.onrender.com/orders/buy`,{
         method:'POST',
         headers:{
           "Authorization": `Bearer ${token}`,
