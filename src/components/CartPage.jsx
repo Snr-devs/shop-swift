@@ -4,8 +4,8 @@ import { useState,useEffect } from 'react';
 import Navbar from './Navbar';
 
 function CartPage() {
-  const [data, setData] = useState(null);  // Holds fetched data
-  const [error, setError] = useState(false); // Handles fetch failure
+  const [data, setData] = useState(null);  
+  const [error, setError] = useState(false); 
 
   useEffect(() => {
     fetch('https://shop-swift-back-end-6.onrender.com/orders') 
