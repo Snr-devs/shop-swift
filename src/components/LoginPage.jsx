@@ -36,7 +36,7 @@ const LoginPage = () => {
         // Redirect or notify success
       }
     } catch (err) {
-      console.error('❌ Error:', err);
+      console.error('❌ Error:', err.response);
       setErrors({ email: 'Invalid credentials or user already exists' });
     } finally {
       setSubmitting(false);

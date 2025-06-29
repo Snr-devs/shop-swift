@@ -7,7 +7,7 @@ function Button({product}){
     e.preventDefault(); 
     setButtonText('Added to cart');}
     
-      fetch("https://shop-swift-back-end-6.onrender.com/orders",{
+      fetch(`https://shop-swift-back-end-6.onrender.com/orders`,{
         method:'POST',
         headers:{
           'Content-type':'application/json'
