@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [isLogin, setIsLogin] = useState(true);
+
+  const navigate=useNavigate()
 
   const toggleForm = () => setIsLogin(!isLogin);
 
@@ -22,16 +25,18 @@ const LoginPage = () => {
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
     try {
       if (isLogin) {
-        const res = await axios.post('http://localhost:5000/login', values);
+        const res = await axios.post('https://shop-swift-back-end-6.onrender.com/api/login', values);
         console.log('✅ Logged in:', res.data);
+        navigate('/mainpage');
         // Redirect or store token here
       } else {
-        const res = await axios.post('http://localhost:5000/signup', values);
+        const res = await axios.post('https://shop-swift-back-end-6.onrender.com/api/register', values);
         console.log('✅ Signed up:', res.data);
+        navigate('/mainpage');
         // Redirect or notify success
       }
     } catch (err) {
-      console.error('❌ Error:', err);
+      console.error('❌ Error:', err.response);
       setErrors({ email: 'Invalid credentials or user already exists' });
     } finally {
       setSubmitting(false);
