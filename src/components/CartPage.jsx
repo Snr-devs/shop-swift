@@ -15,7 +15,7 @@ function CartPage() {
       setError(true);
       return;
     }
-    fetch('https://shop-swift-back-end-6.onrender.com/orders', {
+    fetch('https://shop-swift-back-end-6.onrender.com/orders/cart', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
