@@ -5,8 +5,7 @@ function Button({product}){
 
   const handleClick = (e) => {
     e.preventDefault(); 
-    setButtonText('Added to cart');}
-
+    setButtonText('Added to cart');
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -14,7 +13,7 @@ function Button({product}){
       return;
     }
     
-      fetch(`https://shop-swift-back-end-6.onrender.com/orders/buy`,{
+        fetch(`https://shop-swift-back-end-6.onrender.com/orders/buy`,{
         method:'POST',
         headers:{
           "Authorization": `Bearer ${token}`,
@@ -24,6 +23,13 @@ function Button({product}){
       })
       .then(res=>res.json())
       .then(data=>{console.log(data)})
+  
+  
+  }
+
+
+    
+
 
   return (
     <div>

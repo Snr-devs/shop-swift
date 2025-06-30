@@ -1,60 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Cart from './Cart';
-import { useState,useEffect } from 'react';
 import Navbar from './Navbar';
+import { CartContext } from '../context/CartContext';
 
 function CartPage() {
-  const [data, setData] = useState(null);  
-  const [error, setError] = useState(false); 
+  const { cartItems } = useContext(CartContext);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-
-     if (!token) {
-      console.error("No token found");
-      setError(true);
-      return;
-    }
-    fetch('https://shop-swift-back-end-6.onrender.com/orders/cart', {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      }
-    }) 
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(json => {
-        if (json.length === 0) {
-          setError(true); 
-        } else {
-          setData(json);
-        }
-      })
-      .catch(() => {
-        setError(true); 
-      });
-  }, []);
-
-  if (error || data === null || data.length === 0) {
+  if (!cartItems || cartItems.length === 0) {
     return <Cart />;
   }
+
   return (
     <div>
       <Navbar />
-      {
-        data.map(dats=>
-          <div className='order'>
-            <p>{dats.total_price}</p>
-
-
-          </div>  
-        )
-      }
+      <div className='order'>
+        {cartItems.map(item => (
+          <div key={item.id}>
+            <p>{item.name} - Quantity: {item.quantity}</p>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
